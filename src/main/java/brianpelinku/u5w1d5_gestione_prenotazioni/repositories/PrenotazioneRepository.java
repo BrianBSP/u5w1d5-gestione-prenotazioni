@@ -17,4 +17,8 @@ public interface PrenotazioneRepository extends JpaRepository<Prenotazione, Long
     boolean existsByPostazioneAziendale(PostazioneAziendale postazioneAziendale);
 
     boolean existsByUtente(Utente utente);
+
+    boolean existsByPostazioneAziendaleAndGiornoPrenotazione(PostazioneAziendale postazioneAziendale, LocalDate giornoPrenotazione);
+
+    boolean existsByUtenteAndGiornoPrenotazione(Utente utente, LocalDate giornoPrenotazione);
 }

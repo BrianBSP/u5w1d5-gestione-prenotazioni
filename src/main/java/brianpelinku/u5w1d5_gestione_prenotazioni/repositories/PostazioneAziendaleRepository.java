@@ -13,7 +13,7 @@ import java.util.List;
 public interface PostazioneAziendaleRepository extends JpaRepository<PostazioneAziendale, Long> {
     boolean existsByDescrizione(String descrizione);
 
-    @Query("SELECT p FROM PostazioneAziendale p JOIN Edificio e" +
+    @Query("SELECT p FROM PostazioneAziendale p JOIN Edificio e " +
             "WHERE p.tipoPostazione = :tipoPostazione AND e.citta = :citta")
     List<PostazioneAziendale> findPostazioniByTipoECitta(@Param("tipoPostazione") TipoPostazione tipoPostazione, @Param("citta") String citta);
 }
