@@ -25,7 +25,7 @@ public class Utente {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "utente")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "utente")
     private List<Prenotazione> prenotazioni;
 
     public Utente(String username, String nome, String email) {

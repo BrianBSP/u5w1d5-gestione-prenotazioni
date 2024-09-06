@@ -35,25 +35,27 @@ public class PostazioneAziendale {
     @JoinColumn(name = "edificio_id")
     private Edificio edificio;
 
-    @OneToMany(mappedBy = "postazioneAziendale")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "postazioneAziendale")
     private List<Prenotazione> prenotazioni;
 
-    public PostazioneAziendale(String descrizione, TipoPostazione tipoPostazione, int numeroMaxOccupanti, boolean isFree, Edificio edificio, List<Prenotazione> prenotazioni) {
+    public PostazioneAziendale(String descrizione, TipoPostazione tipoPostazione, int numeroMaxOccupanti, boolean isFree, Edificio edificio) {
         this.descrizione = descrizione;
         this.tipoPostazione = tipoPostazione;
         this.numeroMaxOccupanti = numeroMaxOccupanti;
         this.isFree = isFree;
         this.edificio = edificio;
-        this.prenotazioni = prenotazioni;
     }
 
-    public PostazioneAziendale(long id, String descrizione, TipoPostazione tipoPostazione, int numeroMaxOccupanti, boolean isFree, Edificio edificio, List<Prenotazione> prenotazioni) {
-        this.id = id;
-        this.descrizione = descrizione;
-        this.tipoPostazione = tipoPostazione;
-        this.numeroMaxOccupanti = numeroMaxOccupanti;
-        this.isFree = isFree;
-        this.edificio = edificio;
-        this.prenotazioni = prenotazioni;
+    @Override
+    public String toString() {
+        return "PostazioneAziendale{" +
+                "id=" + id +
+                ", descrizione='" + descrizione + '\'' +
+                ", tipoPostazione=" + tipoPostazione +
+                ", numeroMaxOccupanti=" + numeroMaxOccupanti +
+                ", isFree=" + isFree +
+                ", edificio=" + edificio +
+                ", prenotazioni=" + prenotazioni +
+                '}';
     }
 }

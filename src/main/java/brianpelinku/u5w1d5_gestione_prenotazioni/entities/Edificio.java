@@ -25,7 +25,7 @@ public class Edificio {
     @Column(name = "citta", nullable = false)
     private String citta;
 
-    @OneToMany(mappedBy = "edificio")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "edificio")
     private List<PostazioneAziendale> postazioneAziendali;
 
     public Edificio(String nome, String indirizzo, String citta) {

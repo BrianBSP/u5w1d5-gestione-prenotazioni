@@ -32,4 +32,11 @@ public class ConfigApplication {
         return new Utente("aldoBaglio2", "Aldo Baglio", "aldo@baglio.it");
     }
 
+    // postazioni
+    /*@Bean("postazione_sala_riunioni")
+    public PostazioneAziendale salaRiunioniGrande() {
+        return new PostazioneAziendale("sala riunione grande", TipoPostazione.SALA_RIUNIONE, 10, true, new Edificio("grattacieloRimini", "via del mare", "Rimini");
+
+    }*/
+
 }
