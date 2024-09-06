@@ -12,17 +12,18 @@ public class EdificioService {
     @Autowired
     private EdificioRepository edificioRepository;
 
-    public void saveEdificio(Edificio edificio){
+    public void saveEdificio(Edificio edificio) {
         if (edificioRepository.existsByNome(edificio.getNome()))
             throw new ValidationException("L'edificio " + edificio.getNome() + " già esistente nel DB");
         edificioRepository.save(edificio);
+        System.out.println("L'edificio " + edificio.getNome() + " salvato Correttamente nel DB");
     }
 
     public Edificio findById(long edificioId) {
-        return edificioRepository.findById(edificioId).orElseThrow(()->new NotFoundException(edificioId));
+        return edificioRepository.findById(edificioId).orElseThrow(() -> new NotFoundException(edificioId));
     }
 
-    public void findByIdAndDelete(long edificioId){
+    public void findByIdAndDelete(long edificioId) {
         Edificio found = this.findById(edificioId);
         edificioRepository.delete(found);
         System.out.println("L'edificio con id " + edificioId + " è stato eliminato correttamente dal DB.");

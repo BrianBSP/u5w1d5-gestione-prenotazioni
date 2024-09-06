@@ -16,6 +16,7 @@ public class PostazioneAziendaleService {
         if (postazioneAziendaleRepository.existsByDescrizione(postazioneAziendale.getDescrizione()))
             throw new ValidationException("La postazione " + postazioneAziendale.getDescrizione() + " già esistente nel DB");
         postazioneAziendaleRepository.save(postazioneAziendale);
+        System.out.println("La postazione " + postazioneAziendale.getDescrizione() + " salvato Correttamente nel DB");
     }
 
     public PostazioneAziendale findById(long postazioneId) {

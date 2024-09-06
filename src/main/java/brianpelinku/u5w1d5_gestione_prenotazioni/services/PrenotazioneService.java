@@ -13,9 +13,10 @@ public class PrenotazioneService {
     private PrenotazioneRepository prenotazioneRepository;
 
     public void savePrenotazione(Prenotazione prenotazione) {
-        if (prenotazioneRepository.existByNome(prenotazione.getNome()))
+        if (prenotazioneRepository.existsByNome(prenotazione.getNome()))
             throw new ValidationException("La prenotazione " + prenotazione.getNome() + " già esistente nel DB");
         prenotazioneRepository.save(prenotazione);
+        System.out.println("La prenotazione " + prenotazione.getNome() + " salvato Correttamente nel DB");
     }
 
     public Prenotazione findById(long prenotazioneId) {

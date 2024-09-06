@@ -16,6 +16,7 @@ public class UtenteService {
         if (utenteRepository.existsByUsername(utente.getUsername()))
             throw new ValidationException("L'utente " + utente.getUsername() + " già esistente nel DB");
         utenteRepository.save(utente);
+        System.out.println("L'utente " + utente.getUsername() + " salvato Correttamente nel DB");
     }
 
     public Utente findById(long utenteId) {
