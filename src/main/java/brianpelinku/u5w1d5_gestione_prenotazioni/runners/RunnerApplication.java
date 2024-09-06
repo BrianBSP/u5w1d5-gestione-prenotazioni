@@ -57,8 +57,8 @@ public class RunnerApplication implements CommandLineRunner {
 
             Prenotazione prenotazione1 = new Prenotazione("prenoto sala riunione", LocalDate.of(2024, 9, 8), utenteService.findById(1), postazioneAziendaleService.findById(3));
             Prenotazione prenotazione2 = new Prenotazione("prenoto sala open space", LocalDate.of(2024, 10, 20), utenteService.findById(2), postazioneAziendaleService.findById(4));
-            prenotazioneService.savePrenotazione(prenotazione1);
-            prenotazioneService.savePrenotazione(prenotazione2);
+//            prenotazioneService.savePrenotazione(prenotazione1);
+//            prenotazioneService.savePrenotazione(prenotazione2);
 
 
         } catch (Exception e) {
