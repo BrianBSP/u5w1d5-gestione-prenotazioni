@@ -21,6 +21,7 @@ public class Prenotazione {
     @Column(name = "nome", nullable = false)
     private String nome;
     @Column(name = "giorno_prenotazione", nullable = false)
+    @Temporal(TemporalType.DATE)  // annotazione trovata in rete --> la prenotazione è valida solo per giorno
     private LocalDate giornoPrenotazione;
 
     @ManyToOne

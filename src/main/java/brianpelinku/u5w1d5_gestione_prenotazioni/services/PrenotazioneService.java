@@ -13,8 +13,19 @@ public class PrenotazioneService {
     private PrenotazioneRepository prenotazioneRepository;
 
     public void savePrenotazione(Prenotazione prenotazione) {
+
+        // controlla se c'è una prenotazione con lo stesso nome
         if (prenotazioneRepository.existsByNome(prenotazione.getNome()))
             throw new ValidationException("La prenotazione " + prenotazione.getNome() + " già esistente nel DB");
+        // controlla se c'è una prenotazione con lo stesso giorno
+        if (prenotazioneRepository.existsByGiornoPrenotazione(prenotazione.getGiornoPrenotazione()))
+            throw new ValidationException("La prenotazione del " + prenotazione.getGiornoPrenotazione() + " già esistente nel DB");
+        // controlla se c'è una prenotazione con lo stesso utente
+        if (prenotazioneRepository.existsByPostazioneAziendale(prenotazione.getPostazioneAziendale()))
+            throw new ValidationException("La prenotazione nella postazione " + prenotazione.getPostazioneAziendale() + " già esistente nel DB");
+        // controlla se c'è una prenotazione con la stessa postazione
+        if (prenotazioneRepository.existsByUtente(prenotazione.getUtente()))
+            throw new ValidationException("La prenotazione di " + prenotazione.getUtente() + " già esistente nel DB");
         prenotazioneRepository.save(prenotazione);
         System.out.println("La prenotazione " + prenotazione.getNome() + " salvato Correttamente nel DB");
     }

@@ -1,11 +1,14 @@
 package brianpelinku.u5w1d5_gestione_prenotazioni.services;
 
 import brianpelinku.u5w1d5_gestione_prenotazioni.entities.PostazioneAziendale;
+import brianpelinku.u5w1d5_gestione_prenotazioni.enums.TipoPostazione;
 import brianpelinku.u5w1d5_gestione_prenotazioni.exceptions.NotFoundException;
 import brianpelinku.u5w1d5_gestione_prenotazioni.exceptions.ValidationException;
 import brianpelinku.u5w1d5_gestione_prenotazioni.repositories.PostazioneAziendaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PostazioneAziendaleService {
@@ -27,6 +30,9 @@ public class PostazioneAziendaleService {
         PostazioneAziendale found = this.findById(postazioneId);
         postazioneAziendaleRepository.delete(found);
         System.out.println("La postazione con id " + postazioneId + " è stato eliminato correttamente dal DB.");
+    }
 
+    public List<PostazioneAziendale> findPostazioniByTipoCitta(TipoPostazione tipoPostazione, String citta) {
+        return postazioneAziendaleRepository.findPostazioniByTipoECitta(tipoPostazione, citta);
     }
 }
