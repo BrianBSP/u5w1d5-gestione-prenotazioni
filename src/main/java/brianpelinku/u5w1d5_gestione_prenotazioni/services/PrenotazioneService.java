@@ -26,6 +26,12 @@ public class PrenotazioneService {
         // controlla se c'è una prenotazione con la stessa postazione
         if (prenotazioneRepository.existsByUtente(prenotazione.getUtente()))
             throw new ValidationException("La prenotazione di " + prenotazione.getUtente() + " già esistente nel DB");
+        // controlla se l'utente ha già una prenotazione per quella data
+        if (prenotazioneRepository.existsByUtenteAndGiornoPrenotazione(prenotazione.getUtente(), prenotazione.getGiornoPrenotazione()))
+            throw new ValidationException("L'utente " + prenotazione.getUtente().getUsername() + " ha già una prenotazione in questa data" + prenotazione.getGiornoPrenotazione());
+        // controlla se la postazione è già stata prenotata in quella data
+        if (prenotazioneRepository.existsByPostazioneAziendaleAndGiornoPrenotazione(prenotazione.getPostazioneAziendale(), prenotazione.getGiornoPrenotazione()))
+            throw new ValidationException("La postazione " + prenotazione.getPostazioneAziendale() + " ha già una prenotazione in questa data" + prenotazione.getGiornoPrenotazione());
         prenotazioneRepository.save(prenotazione);
         System.out.println("La prenotazione " + prenotazione.getNome() + " salvato Correttamente nel DB");
     }
